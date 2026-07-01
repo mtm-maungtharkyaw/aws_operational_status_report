@@ -17,7 +17,7 @@ This repository contains standardized AWS operational report templates for monit
 ### 1. [ECS Report](AWS_Report_Templates_Data_Table.md#1-ecs-report)
 **Service:** Amazon Elastic Container Service  
 **Focus:** Container orchestration, task management, resource utilization  
-**Template:** [ecs-report-template.md](ecs-report-template.md)
+**Template:** [ecs-report-template.md](./resources/ecs-report-template.md)
 
 **Key Sections:**
 - Resource Configuration (CPU, Memory, Auto-scaling)
@@ -34,7 +34,7 @@ This repository contains standardized AWS operational report templates for monit
 ### 2. [Aurora Serverless v2 Report](AWS_Report_Templates_Data_Table.md#2-aurora-serverless-v2-report)
 **Service:** Amazon Aurora Serverless v2  
 **Focus:** Database performance, capacity scaling, connection management  
-**Template:** [aurora-report-template.md](aurora-report-template.md)
+**Template:** [aurora-report-template.md](./resources/aurora-report-template.md)
 
 **Key Sections:**
 - Configuration (ACU limits, Multi-AZ, Backup)
@@ -52,7 +52,7 @@ This repository contains standardized AWS operational report templates for monit
 ### 3. [DynamoDB Report](AWS_Report_Templates_Data_Table.md#3-dynamodb-report)
 **Service:** Amazon DynamoDB  
 **Focus:** NoSQL performance, capacity management, throttling analysis  
-**Template:** [dynamodb-report-template.md](dynamodb-report-template.md)
+**Template:** [dynamodb-report-template.md](./resources/dynamodb-report-template.md)
 
 **Key Sections:**
 - Configuration (Billing mode, Encryption, PITR)
@@ -71,7 +71,7 @@ This repository contains standardized AWS operational report templates for monit
 ### 4. [NLB Report](AWS_Report_Templates_Data_Table.md#4-nlb-report)
 **Service:** Network Load Balancer  
 **Focus:** Traffic distribution, target health, connection management  
-**Template:** [nlb-report-template.md](nlb-report-template.md)
+**Template:** [nlb-report-template.md](./resources/nlb-report-template.md)
 
 **Key Sections:**
 - Configuration (Availability zones, Target groups, Health checks)
@@ -91,7 +91,7 @@ This repository contains standardized AWS operational report templates for monit
 ### 5. [EFS Report](AWS_Report_Templates_Data_Table.md#5-efs-elastic-file-system-report)
 **Service:** Amazon Elastic File System  
 **Focus:** File storage, I/O performance, throughput management  
-**Template:** [efs-report-template.md](efs-report-template.md)
+**Template:** [efs-report-template.md](./resources/efs-report-template.md)
 
 **Key Sections:**
 - Configuration (Performance mode, Throughput mode, Lifecycle)
@@ -110,7 +110,7 @@ This repository contains standardized AWS operational report templates for monit
 ### 6. [CloudWatch Synthetics Report](AWS_Report_Templates_Data_Table.md#6-cloudwatch-synthetics-report)
 **Service:** AWS CloudWatch Synthetics  
 **Focus:** Endpoint monitoring, availability tracking, SLA compliance  
-**Template:** [synthetics-report-template.md](synthetics-report-template.md)
+**Template:** [synthetics-report-template.md](./resources/synthetics-report-template.md)
 
 **Key Sections:**
 - Configuration (Canary setup, Schedule, Monitored endpoints)
@@ -129,7 +129,7 @@ This repository contains standardized AWS operational report templates for monit
 ### 7. [Monthly Summary Report](monthly-summary-template.md)
 **Service:** Cross-service Infrastructure Summary  
 **Focus:** Overall infrastructure health and executive overview  
-**Template:** [monthly-summary-template.md](monthly-summary-template.md)
+**Template:** [monthly-summary-template.md](./resources/monthly-summary-template.md)
 
 **Key Sections:**
 - Executive Summary with all service scores
@@ -178,102 +178,3 @@ Health scores range from 1-10:
 - **1-2:** Critical (immediate action)
 
 ---
-
-## How to Use These Templates
-
-### For Monthly Reporting
-1. Collect data from CloudWatch, AWS Console, and Cost Explorer
-2. Populate metrics in each section
-3. Analyze time-based patterns
-4. Assign health scores based on thresholds
-5. Document incidents and root causes
-6. Provide prioritized recommendations
-
-### For Incident Response
-1. Navigate to **Incidents & Issues** section
-2. Document incident timeline and impact
-3. Use metrics to identify root cause
-4. Update **Recommendations** with preventive measures
-
-### For Capacity Planning
-1. Review **Storage/Capacity** sections
-2. Analyze growth trends (weekly/monthly)
-3. Use projections (3/6 months) for planning
-4. Check **Resource Efficiency** scores
-
-### For Cost Optimization
-1. Review **Cost Analysis** sections
-2. Cross-reference with **Resource Efficiency**
-3. Identify overprovisioned resources
-4. Implement recommendations from **Long-term** action items
-
----
-
-## Documentation
-
-### Data Table Reference
-See [AWS_Report_Templates_Data_Table.md](AWS_Report_Templates_Data_Table.md) for detailed table format showing all metrics, categories, and analysis points for each report.
-
-### Data Collection Methods
-
-**CloudWatch Metrics**
-- Time range: Full calendar month
-- Period: 5 minutes for detailed metrics, 1 hour for aggregates
-- Statistics: Average, Maximum, Minimum, Sum, Percentiles
-
-**AWS CLI & Console**
-- Configuration snapshots
-- Resource relationships
-- Current capacity settings
-
-**Cost Explorer**
-- Service-level costs
-- Daily/monthly breakdowns
-- Cost allocation tags
-
----
-
-## Maintenance & Updates
-
-### Monthly Tasks
-- [ ] Collect metrics for previous month
-- [ ] Update all applicable reports
-- [ ] Review and score health indicators
-- [ ] Track recommendation completion
-- [ ] Archive previous month's reports
-
-### Quarterly Tasks
-- [ ] Review template effectiveness
-- [ ] Update thresholds and scoring criteria
-- [ ] Validate data collection methods
-- [ ] Update documentation
-
----
-
-## Contact & Support
-
-For questions or template improvements:
-- **Team:** DevOps/SRE
-- **Project:** INNER_HOHOEMI-383
-- **Repository:** [Link to repository]
-
----
-
-## Version History
-
-| Version | Date | Changes |
-|---------|------|---------|
-| 1.0 | 2026-07-01 | Initial template creation for ECS, Aurora, DynamoDB, NLB, EFS, Synthetics, and Monthly Summary |
-
----
-
-## Future Templates (Planned)
-
-- [ ] Lambda Performance Report
-- [ ] CloudFront Distribution Report
-- [ ] S3 Bucket Analytics Report
-- [ ] RDS Performance Report
-
----
-
-**Note:** This is a living document. Contribute improvements through pull requests or team discussions.
