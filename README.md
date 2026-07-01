@@ -16,7 +16,8 @@ This repository contains standardized AWS operational report templates for monit
 
 ### 1. [ECS Report](AWS_Report_Templates_Data_Table.md#1-ecs-report)
 **Service:** Amazon Elastic Container Service  
-**Focus:** Container orchestration, task management, resource utilization
+**Focus:** Container orchestration, task management, resource utilization  
+**Template:** [ecs-report-template.md](ecs-report-template.md)
 
 **Key Sections:**
 - Resource Configuration (CPU, Memory, Auto-scaling)
@@ -32,7 +33,8 @@ This repository contains standardized AWS operational report templates for monit
 
 ### 2. [Aurora Serverless v2 Report](AWS_Report_Templates_Data_Table.md#2-aurora-serverless-v2-report)
 **Service:** Amazon Aurora Serverless v2  
-**Focus:** Database performance, capacity scaling, connection management
+**Focus:** Database performance, capacity scaling, connection management  
+**Template:** [aurora-report-template.md](aurora-report-template.md)
 
 **Key Sections:**
 - Configuration (ACU limits, Multi-AZ, Backup)
@@ -49,7 +51,8 @@ This repository contains standardized AWS operational report templates for monit
 
 ### 3. [DynamoDB Report](AWS_Report_Templates_Data_Table.md#3-dynamodb-report)
 **Service:** Amazon DynamoDB  
-**Focus:** NoSQL performance, capacity management, throttling analysis
+**Focus:** NoSQL performance, capacity management, throttling analysis  
+**Template:** [dynamodb-report-template.md](dynamodb-report-template.md)
 
 **Key Sections:**
 - Configuration (Billing mode, Encryption, PITR)
@@ -67,7 +70,8 @@ This repository contains standardized AWS operational report templates for monit
 
 ### 4. [NLB Report](AWS_Report_Templates_Data_Table.md#4-nlb-report)
 **Service:** Network Load Balancer  
-**Focus:** Traffic distribution, target health, connection management
+**Focus:** Traffic distribution, target health, connection management  
+**Template:** [nlb-report-template.md](nlb-report-template.md)
 
 **Key Sections:**
 - Configuration (Availability zones, Target groups, Health checks)
@@ -81,6 +85,61 @@ This repository contains standardized AWS operational report templates for monit
 - Cost Analysis (LCU, Data transfer)
 
 **Best For:** Load balancer optimization, target health monitoring, traffic pattern analysis
+
+---
+
+### 5. [EFS Report](AWS_Report_Templates_Data_Table.md#5-efs-elastic-file-system-report)
+**Service:** Amazon Elastic File System  
+**Focus:** File storage, I/O performance, throughput management  
+**Template:** [efs-report-template.md](efs-report-template.md)
+
+**Key Sections:**
+- Configuration (Performance mode, Throughput mode, Lifecycle)
+- Storage Utilization & Growth Tracking
+- I/O Operations by time period
+- Throughput Metrics (Read/Write)
+- Performance Metrics (Connections, IO limits, Burst credits)
+- Backup Status & Success Rate
+- Connected Resources (Mount targets, ECS tasks)
+- Cost Analysis (Storage, Requests, Throughput)
+
+**Best For:** File system capacity planning, I/O optimization, throughput mode selection
+
+---
+
+### 6. [CloudWatch Synthetics Report](AWS_Report_Templates_Data_Table.md#6-cloudwatch-synthetics-report)
+**Service:** AWS CloudWatch Synthetics  
+**Focus:** Endpoint monitoring, availability tracking, SLA compliance  
+**Template:** [synthetics-report-template.md](synthetics-report-template.md)
+
+**Key Sections:**
+- Configuration (Canary setup, Schedule, Monitored endpoints)
+- Availability & Success Rate by time period
+- Response Time & Latency Metrics (P50, P95, P99)
+- Failure Analysis & Root Cause
+- Screenshots & Artifacts
+- Alerts & Notifications
+- SLA Compliance Tracking
+- Cost Analysis
+
+**Best For:** Uptime monitoring, performance tracking, SLA validation, endpoint health checks
+
+---
+
+### 7. [Monthly Summary Report](monthly-summary-template.md)
+**Service:** Cross-service Infrastructure Summary  
+**Focus:** Overall infrastructure health and executive overview  
+**Template:** [monthly-summary-template.md](monthly-summary-template.md)
+
+**Key Sections:**
+- Executive Summary with all service scores
+- Infrastructure Overview
+- Individual service highlights
+- Cross-service incidents
+- Overall recommendations
+- Monthly cost summary
+
+**Best For:** Executive reporting, infrastructure health overview, month-over-month tracking
 
 ---
 
@@ -204,17 +263,16 @@ For questions or template improvements:
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 1.0 | 2026-07-01 | Initial template creation for ECS, Aurora, DynamoDB, NLB |
+| 1.0 | 2026-07-01 | Initial template creation for ECS, Aurora, DynamoDB, NLB, EFS, Synthetics, and Monthly Summary |
 
 ---
 
 ## Future Templates (Planned)
 
-- [ ] EFS (Elastic File System) Report
-- [ ] CloudWatch Synthetics Report
-- [ ] Monthly Cross-Service Summary Report
 - [ ] Lambda Performance Report
 - [ ] CloudFront Distribution Report
+- [ ] S3 Bucket Analytics Report
+- [ ] RDS Performance Report
 
 ---
 

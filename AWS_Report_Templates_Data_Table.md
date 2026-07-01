@@ -13,6 +13,8 @@ This document provides a structured overview of all AWS service monitoring repor
 2. [Aurora Serverless v2 Report](#2-aurora-serverless-v2-report)
 3. [DynamoDB Report](#3-dynamodb-report)
 4. [NLB Report](#4-nlb-report)
+5. [EFS Report](#5-efs-elastic-file-system-report)
+6. [CloudWatch Synthetics Report](#6-cloudwatch-synthetics-report)
 
 ---
 
@@ -24,6 +26,8 @@ This document provides a structured overview of all AWS service monitoring repor
 | **Aurora Serverless v2** | CPU, Memory, ACU, Connections, Storage, Latency | 4 time periods for ACU | CPU, Memory, ACU Scaling, Connections, Performance |
 | **DynamoDB** | RCU/WCU, Throttling, Latency, Storage, Errors | 4 time periods for Operations | Read/Write Performance, Latency, Throttling, Storage Growth |
 | **NLB** | Traffic, Data Transfer, Target Health, Errors | 4 time periods for Traffic | Traffic Volume, Target Health, Error Rate, Performance |
+| **EFS** | Storage, I/O Operations, Throughput, Performance | 4 time periods for I/O | Storage Growth, I/O Operations, Throughput, Performance, Backup |
+| **Synthetics** | Availability, Response Time, Failures | 4 time periods for Success Rate & Latency | Availability, Response Time, Failure Rate |
 
 ---
 
@@ -99,5 +103,43 @@ This document provides a structured overview of all AWS service monitoring repor
 | **12. Incidents & Issues** | Operations | • Incident details<br>• Date, time, duration<br>• Impact & severity<br>• Root cause & resolution<br>• CloudWatch alarms | N/A | Incident timeline |
 | **13. Security & Access** | Security | • IP whitelist status<br>• CIDR blocks & purpose<br>• Security group rules | N/A | Security posture |
 | **14. Appendix** | Reference | • Data collection methods<br>• Related resources (ARNs)<br>• Registered targets | N/A | Documentation |
+
+---
+
+## 5. EFS (Elastic File System) Report
+
+| Section | Category | Metrics/Information | Time Breakdown | Analysis |
+|---------|----------|---------------------|----------------|----------|
+| **1. Configuration** | Setup | • File System ID<br>• Performance mode (General Purpose/Max I/O)<br>• Throughput mode (Bursting/Elastic/Provisioned)<br>• Encryption status<br>• Availability zones<br>• Lifecycle management<br>• Backup schedule & retention | N/A | Configuration overview |
+| **2. Storage Utilization** | Capacity | • Total storage (GB)<br>• Monthly growth (GB & %)<br>• Average daily storage<br>• Previous month comparison<br>• Weekly breakdown | • Week 1-4 tracking | • Growth assessment<br>• 3/6-month projections<br>• Status (⚪🟡🔴) |
+| **3. I/O Operations** | Performance | • Avg/peak read ops per min<br>• Avg/peak write ops per min<br>• Peak times with context<br>• Total operations monthly | • Night (00:00-06:00)<br>• Morning (06:00-12:00)<br>• Afternoon (12:00-18:00)<br>• Evening (18:00-24:00) | • I/O pattern observations<br>• Peak usage periods<br>• Health status (✅🟡🔴) |
+| **4. Throughput** | Performance | • Avg/peak read MB/s<br>• Avg/peak write MB/s<br>• Peak times<br>• Baseline & burst limits<br>• % of baseline used | N/A | • Throughput adequacy<br>• Mode assessment<br>• Health status (✅🟡🔴) |
+| **5. Performance Metrics** | Performance | • Average client connections<br>• Peak connections<br>• % IO limit (avg/peak)<br>• Times > 80%<br>• Burst credit balance (if applicable)<br>• Credits depleted count | N/A | • Client connection patterns<br>• I/O limit observations<br>• Credit analysis<br>• Health status (✅🟡🔴) |
+| **6. Backup Status** | Operations | • Backup schedule & retention<br>• Successful backups count & %<br>• Failed backups<br>• Average backup size & duration<br>• Backup details table | N/A | • Backup success rate<br>• Failure reasons<br>• Status (✅🟡🔴) |
+| **7. Connected Resources** | Operations | • Mount targets (AZ, ID, IP, status)<br>• ECS tasks connected | N/A | Resource mapping |
+| **8. Health Summary** | Overall | • Storage growth score (1-10)<br>• I/O operations score<br>• Throughput score<br>• Performance score<br>• Backup score<br>• Overall score | N/A | • Strengths<br>• Concerns<br>• Risks |
+| **9. Cost Analysis** | Cost | • Standard storage costs<br>• IA storage costs<br>• Read/write request costs<br>• Provisioned throughput costs<br>• Total monthly cost | N/A | Cost breakdown by category |
+| **10. Recommendations** | Action Items | • Immediate actions (<1 month)<br>• Short-term (1-3 months)<br>• Long-term (3-6 months) | N/A | Priority, reason, action, owner |
+| **11. Incidents & Issues** | Operations | • Incident details<br>• Date, time, duration<br>• Impact & severity<br>• Root cause & resolution | N/A | Incident timeline |
+| **12. Appendix** | Reference | • Data collection methods<br>• Configuration details<br>• Security group & VPC info | N/A | Documentation |
+
+---
+
+## 6. CloudWatch Synthetics Report
+
+| Section | Category | Metrics/Information | Time Breakdown | Analysis |
+|---------|----------|---------------------|----------------|----------|
+| **1. Configuration** | Setup | • Canary name & purpose<br>• Runtime version<br>• Schedule frequency<br>• Monitored URL<br>• Host header<br>• VPC execution settings<br>• Subnets & security group | N/A | Configuration overview |
+| **2. Availability & Success Rate** | Performance | • Success rate %<br>• Total/successful/failed runs<br>• Uptime %<br>• Weekly success rate breakdown<br>• SLA target vs actual | • Night (00:00-06:00)<br>• Morning (06:00-12:00)<br>• Afternoon (12:00-18:00)<br>• Evening (18:00-24:00) | • Availability patterns<br>• Downtime periods<br>• SLA compliance<br>• Health status (✅🟡🔴) |
+| **3. Response Time & Latency** | Performance | • Avg/P50/P90/P95/P99/max/min duration<br>• Weekly duration trend<br>• Target response time<br>• Target met status | • Night (00:00-06:00)<br>• Morning (06:00-12:00)<br>• Afternoon (12:00-18:00)<br>• Evening (18:00-24:00) | • Latency patterns<br>• Performance degradation<br>• Response time trends<br>• Health status (✅🟡🔴) |
+| **4. Failure Analysis** | Operations | • Total failures & %<br>• Network errors<br>• HTTP errors (4xx/5xx)<br>• Timeout errors<br>• Failed runs detail table<br>• Failure by day of week<br>• Root cause analysis | N/A | • Failure patterns<br>• Common causes<br>• Correlation analysis<br>• Status (✅🟡🔴) |
+| **5. Screenshots & Artifacts** | Operations | • Screenshots captured/failed<br>• Total size<br>• S3 bucket<br>• HAR files generated | N/A | Artifact statistics |
+| **6. Alerts & Notifications** | Operations | • SNS notification counts<br>• Recipients<br>• CloudWatch alarms triggered | N/A | Alert summary |
+| **7. Health Summary** | Overall | • Availability score (1-10)<br>• Response time score<br>• Failure rate score<br>• Overall score | N/A | • Strengths<br>• Concerns<br>• Risks |
+| **8. SLA Compliance** | Performance | • Uptime % target vs actual<br>• Response time target vs actual<br>• Error rate target vs actual<br>• SLA met status | N/A | • SLA compliance status<br>• Breach analysis |
+| **9. Cost Analysis** | Cost | • Canary run costs<br>• Screenshot storage costs<br>• VPC execution costs<br>• Total monthly cost | N/A | Cost breakdown |
+| **10. Recommendations** | Action Items | • Immediate actions (<1 month)<br>• Short-term (1-3 months)<br>• Long-term (3-6 months) | N/A | Priority, reason, action, owner |
+| **11. Incidents & Issues** | Operations | • Incident details<br>• Date, time, duration<br>• Impact & severity<br>• Root cause & resolution | N/A | Incident timeline |
+| **12. Appendix** | Reference | • Data collection methods<br>• Monitored endpoint details<br>• Canary script summary | N/A | Documentation |
 
 ---
